@@ -14,26 +14,11 @@ class Feedback extends React.Component {
       bad: 0,
       hasFeedback: false,
     };
-    this.changeStateGood = this.changeStateGood.bind(this);
-    this.changeStateNeutral = this.changeStateNeutral.bind(this);
-    this.changeStateBad = this.changeStateBad.bind(this);
   }
 
-  changeStateGood = () => {
+  handleFeedback = type => {
     this.setState(prevState => ({
-      good: prevState.good + 1,
-      hasFeedback: true,
-    }));
-  };
-  changeStateNeutral = () => {
-    this.setState(prevState => ({
-      neutral: prevState.neutral + 1,
-      hasFeedback: true,
-    }));
-  };
-  changeStateBad = () => {
-    this.setState(prevState => ({
-      bad: prevState.bad + 1,
+      [type]: prevState[type] + 1,
       hasFeedback: true,
     }));
   };
@@ -46,7 +31,7 @@ class Feedback extends React.Component {
 
   render() {
     const positivePercentage = this.calculatePositivePercentage();
-    const { hasFeedback } = this.state;
+    const { good, neutral, bad, hasFeedback } = this.state;
     return (
       <div className={css.feedbackContainer}>
         <div className={css.leaveFeedback}>
@@ -55,17 +40,17 @@ class Feedback extends React.Component {
             first="Good"
             second="Neutral"
             last="Bad"
-            onGood={this.changeStateGood}
-            onNeutral={this.changeStateNeutral}
-            onBad={this.changeStateBad}
+            onGood={() => this.handleFeedback('good')}
+            onNeutral={() => this.handleFeedback('neutral')}
+            onBad={() => this.handleFeedback('bad')}
           />
         </div>
         {hasFeedback ? (
           <FeedbackResults
-            statusGood={this.state.good}
-            statusNeutral={this.state.neutral}
-            statusBad={this.state.bad}
-            total={this.state.bad + this.state.neutral + this.state.good}
+            statusGood={good}
+            statusNeutral={neutral}
+            statusBad={bad}
+            total={bad + neutral + good}
             positiveFeedback={positivePercentage}
           />
         ) : (
