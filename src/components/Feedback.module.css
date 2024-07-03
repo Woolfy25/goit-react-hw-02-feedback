@@ -15,19 +15,3 @@
   align-items: center;
   gap: 20px;
 }
-
-.feedbackResults {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: flex-start;
-  gap: 15px;
-}
-
-.feedbackResults h2 {
-  font-size: 35px;
-}
-
-.feedbackResults p {
-  font-size: 25px;
-}

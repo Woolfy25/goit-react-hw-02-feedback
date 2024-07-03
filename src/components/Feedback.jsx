@@ -3,6 +3,7 @@ import css from './Feedback.module.css';
 import Title from './Title';
 import FeedbackButtons from './FeedbackButtons';
 import NoFeedback from './NoFeedback';
+import FeedbackResults from './FeedbackResults';
 
 class Feedback extends React.Component {
   constructor() {
@@ -60,14 +61,13 @@ class Feedback extends React.Component {
           />
         </div>
         {hasFeedback ? (
-          <div className={css.feedbackResults}>
-            <h2>Statistics</h2>
-            <p>Good:{this.state.good}</p>
-            <p>Neutral:{this.state.neutral}</p>
-            <p>Bad:{this.state.bad}</p>
-            <p>Total:{this.state.bad + this.state.neutral + this.state.good}</p>
-            <p>Positive feedback:{positivePercentage}%</p>
-          </div>
+          <FeedbackResults
+            statusGood={this.state.good}
+            statusNeutral={this.state.neutral}
+            statusBad={this.state.bad}
+            total={this.state.bad + this.state.neutral + this.state.good}
+            positiveFeedback={positivePercentage}
+          />
         ) : (
           <NoFeedback nofeedbacktext={'There is no feedback'} />
         )}
