@@ -1,4 +1,5 @@
 import React from 'react';
+import css from './Feedback.module.css';
 
 class Feedback extends React.Component {
   constructor() {
@@ -43,15 +44,17 @@ class Feedback extends React.Component {
     const positivePercentage = this.calculatePositivePercentage();
     const { hasFeedback } = this.state;
     return (
-      <div>
-        <div>
+      <div className={css.feedbackContainer}>
+        <div className={css.leaveFeedback}>
           <h1>Please leave feedback</h1>
-          <button onClick={this.changeStateGood}>Good</button>
-          <button onClick={this.changeStateNeutral}>Neutral</button>
-          <button onClick={this.changeStateBad}>Bad</button>
+          <div className={css.leaveFeedbackDiv}>
+            <button onClick={this.changeStateGood}>Good</button>
+            <button onClick={this.changeStateNeutral}>Neutral</button>
+            <button onClick={this.changeStateBad}>Bad</button>
+          </div>
         </div>
         {hasFeedback ? (
-          <div>
+          <div className={css.feedbackResults}>
             <h2>Statistics</h2>
             <p>Good:{this.state.good}</p>
             <p>Neutral:{this.state.neutral}</p>
