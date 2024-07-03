@@ -1,0 +1,13 @@
+.leaveFeedbackDiv {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+.leaveFeedbackDiv button {
+  border-radius: 10px;
+  width: 60px;
+  height: 25px;
+}

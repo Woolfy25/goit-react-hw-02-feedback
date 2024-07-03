@@ -1,5 +1,8 @@
 import React from 'react';
 import css from './Feedback.module.css';
+import Title from './Title';
+import FeedbackButtons from './FeedbackButtons';
+import NoFeedback from './NoFeedback';
 
 class Feedback extends React.Component {
   constructor() {
@@ -46,12 +49,15 @@ class Feedback extends React.Component {
     return (
       <div className={css.feedbackContainer}>
         <div className={css.leaveFeedback}>
-          <h1>Please leave feedback</h1>
-          <div className={css.leaveFeedbackDiv}>
-            <button onClick={this.changeStateGood}>Good</button>
-            <button onClick={this.changeStateNeutral}>Neutral</button>
-            <button onClick={this.changeStateBad}>Bad</button>
-          </div>
+          <Title title={'Please leave feedback'} />
+          <FeedbackButtons
+            first="Good"
+            second="Neutral"
+            last="Bad"
+            onGood={this.changeStateGood}
+            onNeutral={this.changeStateNeutral}
+            onBad={this.changeStateBad}
+          />
         </div>
         {hasFeedback ? (
           <div className={css.feedbackResults}>
@@ -63,7 +69,7 @@ class Feedback extends React.Component {
             <p>Positive feedback:{positivePercentage}%</p>
           </div>
         ) : (
-          <p>There is no feedback</p>
+          <NoFeedback nofeedbacktext={'There is no feedback'} />
         )}
       </div>
     );
