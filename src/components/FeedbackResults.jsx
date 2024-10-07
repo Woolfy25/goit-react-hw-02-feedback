@@ -12,11 +12,11 @@ const FeedbackResults = ({
   return (
     <div className={css.feedbackResults}>
       <h2>Statistics</h2>
-      <p>Good:{statusGood}</p>
-      <p>Neutral:{statusNeutral}</p>
-      <p>Bad:{statusBad}</p>
-      <p>Total:{total}</p>
-      <p>Positive feedback:{positiveFeedback}%</p>
+      <p>Good: {statusGood}</p>
+      <p>Neutral: {statusNeutral}</p>
+      <p>Bad: {statusBad}</p>
+      <p>Total: {total}</p>
+      <p>Positive feedback: {positiveFeedback}%</p>
     </div>
   );
 };
